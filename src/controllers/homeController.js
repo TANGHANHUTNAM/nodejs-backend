@@ -9,7 +9,11 @@ const {
 
 const getHomepage = async (req, res) => {
   let results = await User.find({});
-  return res.render("home.ejs", { listUsers: results }); // x <- y
+
+  return res.status(200).json({
+    errorCode: 0,
+    data: results,
+  });
 };
 
 const getABC = (req, res) => {
