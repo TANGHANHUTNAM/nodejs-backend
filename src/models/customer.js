@@ -14,6 +14,11 @@ const customerSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    // statics: {
+    //   findByNhutNam(name) {
+    //     return this.find({ name: new RegExp(name, "i") });
+    //   },
+    // },
   }
 );
 customerSchema.plugin(mongoose_delete, { overrideMethods: "all" });

@@ -15,6 +15,7 @@ const {
   getAllCustomers,
   putUpdateCustomer,
   deleteACustomer,
+  deleteArrayCustomer,
 } = require("../controllers/customerController");
 
 // User
@@ -31,5 +32,6 @@ routerAPI.post("/customers-many", postCreateArrayCustomer);
 routerAPI.get("/customers", getAllCustomers);
 routerAPI.put("/customers", putUpdateCustomer);
 routerAPI.delete("/customers", deleteACustomer);
+routerAPI.delete("/customers-many", deleteArrayCustomer);
 
 module.exports = routerAPI;
