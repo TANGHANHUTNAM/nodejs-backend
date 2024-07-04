@@ -48,18 +48,18 @@ module.exports = {
     }
   },
   getAllCustomers: async (req, res) => {
-    let customers = await getAllCustomersService();
-    if (customers) {
-      return res.status(200).json({
-        EC: 0,
-        data: customers,
-      });
+    let limit = req.query.limit;
+    let page = req.query.page;
+    let result = {};
+    if (limit && page) {
+      result = await getAllCustomersService(limit, page);
     } else {
-      return res.status(500).json({
-        EC: -1,
-        data: customers,
-      });
+      result = await getAllCustomersService();
     }
+    return res.status(200).json({
+      EC: 0,
+      data: result,
+    });
   },
   putUpdateCustomer: async (req, res) => {
     const { name, address, email, id } = req.body;
