@@ -1,3 +1,4 @@
+const aqp = require("api-query-params");
 const { uploadSingleFile } = require("../services/fileService");
 const {
   createCustomerService,
@@ -50,9 +51,10 @@ module.exports = {
   getAllCustomers: async (req, res) => {
     let limit = req.query.limit;
     let page = req.query.page;
-    let result = {};
+    let name = req.query.name;
+    let result = null;
     if (limit && page) {
-      result = await getAllCustomersService(limit, page);
+      result = await getAllCustomersService(limit, page, name, req.query);
     } else {
       result = await getAllCustomersService();
     }
